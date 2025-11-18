@@ -1,5 +1,9 @@
-### User-installed applications
+# All lines that start with a `#` are considered comments
+# Empty lines are skipped
 
+#--- User-installed applications ---
+
+# Application name,     Icon name
 Chrome Remote Desktop Host Uninstaller,     remoting_uninstaller.icns
 FortClient,             electron.icns
 FortClientUninstaller,  Uninstall_icon.icns
@@ -26,9 +30,9 @@ krita,                  krita_SRCS.icns
 Keyboard Maestro,       kmicon.icns
 
 
-### Applications from the App Store
+#--- Applications from the App Store ---
 
-GarageBand
+# Application name,     Icon name
 FileZilla Pro,          filezilla.icns
 PDF Toolkit+,           Icon.icns
 Diagrammix,             icon.icns
