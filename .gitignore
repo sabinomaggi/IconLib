@@ -1,0 +1,19 @@
+#-----------------------------------------------------#
+#                                                     #
+# .gitignore file for the IconLiberator project       #
+#                                                     #
+#-----------------------------------------------------#
+# Author:        Sabino Maggi                         #
+# File Created:  18-11-2025                           #
+# Last revision: 18-11-2025                           #
+#-----------------------------------------------------#
+
+
+#--- macOS junk ---
+.DS_Store
+
+#--- pdf and backup files ---
+*.pdf
+*.bak
+*~
+

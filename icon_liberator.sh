@@ -1,0 +1,90 @@
+#!/bin/bash
+# Usage: icon_liberator.sh -f /path/to/applist [-u] [-h]
+
+# exit on error (we don't want this here)
+# set -e
+
+# check if fileicon is installed, otherwise change the PATH to use the provided version
+if [[ ! -e `which fileicon` ]]; then
+    export PATH=.:$PATH
+fi
+
+APPS="/Applications"
+SEP=","
+UNDO=""
+
+WORK=`dirname pwd`
+LOG=$WORK/log_`date "+%Y%m%d-%H%M%S"`.txt
+
+HELP="icon_liberator.sh
+ usage: icon_liberator.sh -f /path/to/applist [-u] [-h]
+ 
+ mandatory argument:
+   -f /path/to/applist   list of apps to be fixed
+
+ optional arguments:
+   -u                    undo icon fix
+   -h                    show this help message and exit
+
+"
+
+# manage command line parameters
+while getopts "f:uh" opt; do
+    case $opt in
+        f)  APPLIST="$OPTARG"
+            ;;
+        u)  UNDO=true
+            ;;
+        h)  echo "$HELP"
+            exit 1
+            ;;
+        \?) echo "Invalid option -$OPTARG" >> $LOG 2>&1
+            exit 1
+            ;;
+      esac
+
+    case $APPLIST in
+        -*) echo "Option $opt needs a valid argument"
+            exit 1
+            ;;
+    esac
+done
+
+
+# start logging script output
+echo `date` > $LOG
+
+
+# check if the file containing the list of apps exists
+if [[ ! -e "$APPLIST" ]]; then
+    echo "App list file not found: $APPLIST"
+    exit 1
+fi
+
+# read list of app to be processed and set/remove original .icns icon
+while IFS=$SEP read name icon; do 
+
+    appname=$name.app
+    ICO=$(echo $icon | sed "s/^[ ]+|[ ]+$//")
+    
+    # skip empty lines and commented items
+    if [[ $name = "" || $appname =~ ^# ]]; then
+        continue
+    fi
+    
+    # write name of application being processed
+    echo $appname
+    
+    icofile="$APPS/$appname/Contents/Resources/$name.icns"
+    if [[ ! -e $icofile ]]; then
+        icofile="$APPS/$appname/Contents/Resources/$ICO"
+    fi
+    
+    if [[ ! $UNDO ]]; then
+        fileicon set "$APPS/$appname" "$icofile" >> $LOG 2>&1
+    else
+        fileicon rm "$APPS/$appname" >> $LOG 2>&1
+    fi
+
+done < $APPLIST
+

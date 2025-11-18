@@ -1,0 +1,38 @@
+### User-installed applications
+
+Chrome Remote Desktop Host Uninstaller,     remoting_uninstaller.icns
+FortClient,             electron.icns
+FortClientUninstaller,  Uninstall_icon.icns
+OpenVPNConnect,         icon.icns
+Tunnelblick
+nnALT,                  Notality.icns
+Zotero
+R,                      RLogo.icns
+Orange
+JASP
+jamovi,                 icon.icns
+QGIS
+Abscissa,               abscissaApp.icns
+TextMate
+BBEdit,                 BBEditApplication.icns  
+Emacs
+OpenMV IDE,             openmv.icns
+Thonny
+Raspberry Pi Imager,    rpi-imager.icns
+
+Gemini 2,               AppIcon.icns
+HandBrake,              HandBrake.icns
+krita,                  krita_SRCS.icns
+Keyboard Maestro,       kmicon.icns
+
+
+### Applications from the App Store
+
+GarageBand
+FileZilla Pro,          filezilla.icns
+PDF Toolkit+,           Icon.icns
+Diagrammix,             icon.icns
+iCircuit
+Past5
+Amphetamine,            AppIcon.icns
+
