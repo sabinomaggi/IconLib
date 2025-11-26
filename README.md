@@ -93,7 +93,7 @@ If the icon filename matches the application name, IconLib can locate it automat
 
 > Finding the correct .icns file
 >
-> Right‑click the application → Show Package Contents.
+> Right‑click the application > Show Package Contents.
 > Open the Contents/Resources folder.
 > Locate the appropriate .icns file (some apps contain several icons; pick the one that matches the original look).
 
