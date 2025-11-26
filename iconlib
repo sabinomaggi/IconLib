@@ -64,26 +64,48 @@ fi
 # read list of app to be processed and set/remove original .icns icon
 while IFS=$SEP read name icon; do 
 
-    appname=$name.app
-    ICO=$(echo $icon | sed "s/^[ ]+|[ ]+$//")
-    
-    # skip empty lines and commented items
-    if [[ $name = "" || $appname =~ ^# ]]; then
+    app_name=$name.app
+    ico_name=$(echo $icon | sed "s/^[ ]+|[ ]+$//")
+    ico_path="$APPS/$app_name/Contents/Resources"
+
+
+    # skip empty and commented out lines
+    if [[ $name = "" || $name =~ ^# ]]; then
         continue
     fi
     
     # write name of application being processed
-    echo $appname
+    echo ""
+    echo "Application: " $app_name
     
-    icofile="$APPS/$appname/Contents/Resources/$name.icns"
-    if [[ ! -e $icofile ]]; then
-        icofile="$APPS/$appname/Contents/Resources/$ICO"
+    n_icons=$(ls -1 "$ico_path/"*".icns" | wc -l)
+    test_name="$ico_path/$name.icns"
+    
+    # try to find icon to use
+    #   case #1: there is only one icon in Contents/Resources folder
+    if [[ $n_icons -eq 1 ]]; then
+        ico_file=$(ls -1 "$ico_path/"*".icns")
+        echo "single icon: YES"
+    
+    #   case #2: icon name identical to app name
+    elif [[ -e $test_name ]]; then
+        ico_file="$test_name"
+        echo "identical: YES"
+    
+    #   case #3: if previous tests fail use icon name provided in app list
+    elif [[ ! -e $test_name ]]; then
+        ico_file="$ico_path/$ico_name"
     fi
+    # end find icon
+    
+    echo "ico_file: " "$ico_file"
+    echo ""
+    
     
     if [[ ! $UNDO ]]; then
-        fileicon set "$APPS/$appname" "$icofile" >> $LOG 2>&1
+        fileicon set "$APPS/$app_name" "$ico_file" >> $LOG 2>&1
     else
-        fileicon rm "$APPS/$appname" >> $LOG 2>&1
+        fileicon rm "$APPS/$app_name" >> $LOG 2>&1
     fi
 
 done < $APPLIST
