@@ -32,6 +32,8 @@ Doing the latter manually (right-click an application, select `Get Info` and rep
 
 Even when developers update their applications with new, Tahoe-compatible icons, the result is often visually unappealing and you may therefore prefer to revert to the pre-Tahoe icons.
 
+For a deeper look at the issue, check out this blog post: [macOS Tahoe: let's free the icons!](https://melabit.com/en/2025/11/24/macos-tahoe-lets-free-the-icons/).
+
 
 ## Installation
 
@@ -89,7 +91,7 @@ An example file (`applist.txt`) ships with the release and can also be [fetched 
 - **Remove** (or comment out) entries for applications you don’t have.
 - **Add** missing applications, pointing to the exact `.icns` file you wish to use.
 
-If the icon filename matches the application name, IconLib can locate it automatically; otherwise you’ll need to supply the explicit filename.
+If the icon filename matches the application name or if there is only one icon file within the Contents/Resources folder, IconLib can locate it automatically; otherwise you’ll need to supply the explicit filename.
 
 > Finding the correct .icns file
 >
