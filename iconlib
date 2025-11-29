@@ -75,7 +75,6 @@ while IFS=$SEP read name icon; do
     fi
     
     # write name of application being processed
-    echo ""
     echo "Application: " $app_name
     
     n_icons=$(ls -1 "$ico_path/"*".icns" | wc -l)
@@ -85,12 +84,12 @@ while IFS=$SEP read name icon; do
     #   case #1: there is only one icon in Contents/Resources folder
     if [[ $n_icons -eq 1 ]]; then
         ico_file=$(ls -1 "$ico_path/"*".icns")
-        echo "single icon: YES"
+        # echo "single icon: YES"
     
     #   case #2: icon name identical to app name
     elif [[ -e $test_name ]]; then
         ico_file="$test_name"
-        echo "identical: YES"
+        # echo "identical: YES"
     
     #   case #3: if previous tests fail use icon name provided in app list
     elif [[ ! -e $test_name ]]; then
@@ -109,4 +108,3 @@ while IFS=$SEP read name icon; do
     fi
 
 done < $APPLIST
-

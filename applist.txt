@@ -4,11 +4,12 @@
 #--- User-installed applications ---
 
 ## Application name,    Icon name
-
 Chrome Remote Desktop Host Uninstaller,     remoting_uninstaller.icns
 OpenVPN Connect/OpenVPN Connect,            icon.icns
 Tunnelblick
+
 nvALT,                  Notality.icns
+
 Zotero
 R,                      RLogo.icns
 Orange
@@ -16,15 +17,17 @@ JASP
 jamovi,                 icon.icns
 QGIS
 Abscissa,               abscissaApp.icns
+
 TextMate
 BBEdit,                 BBEditApplication.icns
 Emacs
+
 OpenMV IDE,             openmv.icns
 Thonny
 Raspberry Pi Imager,    rpi-imager.icns
 
+HandBrake
 Gemini 2,               AppIcon.icns
-HandBrake,              HandBrake.icns
 Keyboard Maestro,       kmicon.icns
 
 
@@ -37,4 +40,3 @@ Diagrammix,             icon.icns
 iCircuit
 Past5
 Amphetamine,            AppIcon.icns
-
