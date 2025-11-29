@@ -84,12 +84,10 @@ while IFS=$SEP read name icon; do
     #   case #1: there is only one icon in Contents/Resources folder
     if [[ $n_icons -eq 1 ]]; then
         ico_file=$(ls -1 "$ico_path/"*".icns")
-        # echo "single icon: YES"
     
     #   case #2: icon name identical to app name
     elif [[ -e $test_name ]]; then
         ico_file="$test_name"
-        # echo "identical: YES"
     
     #   case #3: if previous tests fail use icon name provided in app list
     elif [[ ! -e $test_name ]]; then
